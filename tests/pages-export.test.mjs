@@ -14,7 +14,11 @@ test("GitHub Pages can load the script that attaches the report's click handlers
   assert.ok(entry?.startsWith(`${base}assets/`), `Bootstrap must load from the Pages subdirectory: ${entry}`);
   await access(new URL(entry.slice(base.length), output));
   assert.match(html, /aria-label="Deck navigation"/);
-  assert.match(html, /aria-label="Deck navigation"/);
+  assert.match(html, /<html[^>]*lang="en"/, "Static HTML must include the root document layout");
+  const stylesheet = html.match(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+\.css)"/)?.[1];
+  assert.ok(stylesheet?.startsWith(`${base}assets/`), `Static render must link compiled deck CSS: ${stylesheet}`);
+  const css = await readFile(new URL(stylesheet.slice(base.length), output), "utf8");
+  assert.match(css, /\.report-shell/, "Compiled stylesheet must contain the deck styles");
 });
 
 test("all exported asset references, including fonts and RSC payloads, resolve inside GitHub Pages", async () => {
