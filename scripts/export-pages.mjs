@@ -1,4 +1,4 @@
-import { cp, mkdir, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -15,7 +15,42 @@ workerUrl.searchParams.set("pages", Date.now().toString());
 const { default: worker } = await import(workerUrl.href);
 const response = await worker.fetch(
   new Request(new URL(base, "http://localhost"), { headers: { accept: "text/html" } }),
-  { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+  {
+    ASSETS: {
+      fetch: async (request) => {
+        const url = new URL(request.url);
+        let pathname = decodeURIComponent(url.pathname);
+        if (pathname.startsWith(base)) pathname = pathname.slice(base.length);
+        pathname = pathname.replace(/^\/+/, "");
+        const filePath = path.resolve(projectRoot, "dist", "client", pathname);
+        const clientRoot = path.resolve(projectRoot, "dist", "client");
+        if (filePath !== clientRoot && !filePath.startsWith(`${clientRoot}${path.sep}`)) {
+          return new Response("Not found", { status: 404 });
+        }
+        try {
+          const bytes = await readFile(filePath);
+          const ext = path.extname(filePath).toLowerCase();
+          const contentTypes = {
+            ".css": "text/css; charset=utf-8",
+            ".js": "text/javascript; charset=utf-8",
+            ".json": "application/json; charset=utf-8",
+            ".woff": "font/woff",
+            ".woff2": "font/woff2",
+            ".png": "image/png",
+            ".jpg": "image/jpeg",
+            ".jpeg": "image/jpeg",
+            ".svg": "image/svg+xml",
+          };
+          return new Response(bytes, {
+            status: 200,
+            headers: { "content-type": contentTypes[ext] ?? "application/octet-stream" },
+          });
+        } catch {
+          return new Response("Not found", { status: 404 });
+        }
+      },
+    },
+  },
   { waitUntil() {}, passThroughOnException() {} },
 );
 
