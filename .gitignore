@@ -1,0 +1,7 @@
+node_modules/
+.next/
+out/
+pages-dist/
+source-notes.txt
+slide-plan.txt
+*.log
