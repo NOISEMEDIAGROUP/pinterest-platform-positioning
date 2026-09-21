@@ -2273,3 +2273,12 @@ button:focus-visible, summary:focus-visible, [contenteditable="true"]:focus-visi
   .story-boxes strong { font-size: clamp(2.9rem, 5vw, 4.7rem); line-height: .78; }
   .story-boxes p { margin-top: 4px; font-size: .8rem; line-height: 1.3; }
 }
+/* Pinterest pass 2: keep the longer recap cover within the fixed deck viewport. */
+.title-panel.thank-you-chapter { justify-content: center; gap: 24px; }
+.title-panel.thank-you-chapter .thank-you-main { margin: 0 auto; }
+.title-panel.thank-you-chapter h1 { font-size: clamp(3.1rem, 6.6vw, 6.3rem); }
+.title-panel.thank-you-chapter .title-period { max-width: 72ch; line-height: 1.5; }
+.title-panel.thank-you-chapter { padding-bottom: 86px; }
+.title-panel.thank-you-chapter h1 { font-size: clamp(2.9rem, 6vw, 5.8rem); }
+.title-panel.thank-you-chapter { padding-bottom: 80px; }
+.title-panel.thank-you-chapter { padding-bottom: 76px; }
