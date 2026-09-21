@@ -22,7 +22,10 @@ async function render() {
 }
 test("renders Pinterest internal recap", async () => {
   const r = await render(); assert.equal(r.status, 200); const h = await r.text();
-  for (const x of ["turn intention into action", "Seven chapters, one commercial argument", "80B+", "Pinterest Intelligence", "Visual Search Ads", "Sephora", "Samsung", "2–4×", "NOW · STRATEGY", "NEXT · DESIGN", "LATER · SCALE"]) assert.match(h, new RegExp(x, "i"));
-  assert.equal((h.match(/data-story-panel="true"/g) ?? []).length, 19);
+  for (const x of ["turn intention into action", "Seven chapters, one commercial argument", "80B+", "Pinterest Intelligence", "Visual Search Ads", "Sephora", "Samsung", "2–4×", "2–3 test sequence"]) assert.match(h, new RegExp(x, "i"));
+  assert.equal((h.match(/data-story-panel="true"/g) ?? []).length, 22);
+  assert.doesNotMatch(h, /NOW · STRATEGY|NEXT · DESIGN|LATER · SCALE/);
+  assert.doesNotMatch(h, /Indian Motorcycle|what Noise should test/i);
+  assert.match(h, /property="og:image" content="https:\/\/noisemediagroup\.github\.io\/pinterest-platform-positioning\/og\.png"/);
   assert.match(h, /rel="stylesheet"[^>]+href="\/pinterest-platform-positioning\/assets\/.+\.css"/);
 });
