@@ -10,16 +10,16 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://noisemediagroup.github.io/pinterest-platform-positioning/"),
   title: "Pinterest Presents 2026 | Noise event recap",
-  description: "An internal Noise recap of Pinterest's platform pitch, product signals and the gates for a useful client test.",
+  description: "A story-led internal recap of Pinterest Presents 2026: what happened, Pinterest's view of AI, product announcements, brand examples, measurement and trends.",
   openGraph: {
     title: "Pinterest Presents 2026 | Noise event recap",
-    description: "What changed, what Pinterest claims and what Noise should test.",
-    images: [{ url: "og.png", width: 1730, height: 909, alt: "Pinterest Presents 2026 internal Noise event recap" }],
+    description: "What happened, what Pinterest announced and how it described the future of visual discovery, AI and advertising.",
+    images: [{ url: "og.png", width: 1730, height: 909, alt: "Pinterest wants to turn intention into action - Noise internal event recap" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Pinterest Presents 2026 | Noise event recap",
-    description: "What changed, what Pinterest claims and what Noise should test.",
+    description: "What happened, what Pinterest announced and how it described the future of visual discovery, AI and advertising.",
     images: ["og.png"],
   },
 };

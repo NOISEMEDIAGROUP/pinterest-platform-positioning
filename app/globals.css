@@ -2282,3 +2282,18 @@ button:focus-visible, summary:focus-visible, [contenteditable="true"]:focus-visi
 .title-panel.thank-you-chapter h1 { font-size: clamp(2.9rem, 6vw, 5.8rem); }
 .title-panel.thank-you-chapter { padding-bottom: 80px; }
 .title-panel.thank-you-chapter { padding-bottom: 76px; }
+.editorial-story { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; margin-top:8px; background:var(--hairline); border:1px solid var(--hairline); }
+.editorial-story article { min-width:0; padding:clamp(20px,2.3vw,34px); background:rgba(255,255,255,.94); }
+.editorial-story span,.story-thread span { color:var(--orange); font-size:.68rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+.editorial-story p { margin:14px 0 0; font-size:clamp(.92rem,1.22vw,1.12rem); line-height:1.55; }
+.story-thread { display:grid; grid-template-columns:minmax(130px,.35fr) minmax(0,1.65fr); align-items:center; gap:24px; margin-top:12px; padding:15px 22px; color:white; background:var(--ink); }
+.story-thread p { margin:0; font-size:clamp(.82rem,1vw,.96rem); line-height:1.45; }
+@media(max-width:700px){.editorial-story{grid-template-columns:1fr}.story-thread{grid-template-columns:1fr;gap:8px}}
+@media (max-height: 820px) and (min-width: 821px) {
+  .editorial-story { margin-top: 2px; }
+  .editorial-story article { padding: 15px 22px; }
+  .editorial-story p { margin-top: 8px; font-size: .84rem; line-height: 1.4; }
+  .story-thread { margin-top: 7px; padding: 10px 18px; }
+  .story-thread p { font-size: .76rem; line-height: 1.35; }
+}
+@media (max-height: 820px) and (min-width: 821px) { #pivot .story-thread { padding-top:8px; padding-bottom:8px; } }
