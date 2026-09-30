@@ -1339,11 +1339,13 @@ button:focus-visible, summary:focus-visible, [contenteditable="true"]:focus-visi
   display: flex;
   flex: 1 1 auto;
   align-items: center;
-  margin: 6px 0 8px;
+  margin: 10px 0 14px;
   font-family: var(--headline-font);
-  font-size: clamp(3.6rem, 6.4vw, 6.6rem);
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
   font-weight: 700;
-  line-height: .78;
+  line-height: .94;
+  letter-spacing: .012em;
+  overflow-wrap: break-word;
   text-transform: uppercase;
 }
 .detail-grid strong {
@@ -1378,6 +1380,7 @@ button:focus-visible, summary:focus-visible, [contenteditable="true"]:focus-visi
 .learn-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 .kit-grid ul,
+.happens-grid ul,
 .happens-grid p {
   margin: 0;
   padding: 0;
@@ -1386,6 +1389,12 @@ button:focus-visible, summary:focus-visible, [contenteditable="true"]:focus-visi
   line-height: 1.45;
   list-style: none;
 }
+.happens-grid li {
+  margin: 0;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.happens-grid li:last-child { border-bottom: 0; }
 .kit-grid li {
   margin: 0;
   padding: 12px 0;
